@@ -1,1 +1,3 @@
 # TelChurn
+
+The website is about a churn prediction system with an offer recommendation feature that is mostly focused on the telecom industry. The model acts on a dataset rather than real-time data (for training and testing). The dataset includes fields such as customer ID, gender, age, tenure, and contract of usage, as well as usage statistics (such as internet streaming, movies, backups, and calls). The dataset also includes the churn status (whether the customer has churned or not) and previous offers accepted by the consumer. We have created an ML model here.Remember that this website was created as a final-year project that must run on my local PC.
