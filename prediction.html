@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Churn Prediction Form</title>
+    <style>
+      /* Your CSS styles here */
+      /* Reset default margin and padding */
+      body,
+      h1,
+      h2,
+      h3,
+      p,
+      ul,
+      li {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f5f5f5;
+        color: #333;
+        line-height: 1.6;
+      }
+
+      header {
+        background-color: #fff;
+        border-bottom: 1px solid #ddd;
+      }
+
+      nav ul {
+        list-style: none;
+        margin: 0;
+        padding: 10px;
+      }
+
+      nav ul li {
+        display: inline;
+        margin-right: 20px;
+      }
+
+      nav ul li a {
+        text-decoration: none;
+        color: #333;
+      }
+
+      main {
+        padding: 20px;
+      }
+
+      form {
+        max-width: 600px;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      label {
+        display: block;
+        margin-bottom: 10px;
+      }
+
+      input[type="text"],
+      select {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="prediction.html">Churn Prediction</a></li>
+          <li><a href="about.html">About</a></li>
+          <!-- Add other navigation links -->
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <form id="churnPredictionForm">
+        <h2>Churn Prediction Form</h2>
+        <label for="customerId">Customer ID:</label>
+        <input type="text" id="customerId" name="customerId" required />
+
+        <!-- Other input fields related to customer information -->
+        <!-- Add more labels and input fields as needed -->
+
+        <button type="button" onclick="predictChurn()">Predict Churn</button>
+      </form>
+
+      <div id="predictionResult">
+        <!-- Prediction results will be displayed here -->
+      </div>
+    </main>
+
+    <script>
+      function predictChurn() {
+        // JavaScript function to handle churn prediction logic
+        // Fetch input values, make an AJAX request to the backend, etc.
+        // Update the UI with prediction result
+
+        // Example code to alert the entered customer ID
+        const customerId = document.getElementById("customerId").value;
+        alert("Predict churn for Customer ID: " + customerId);
+      }
+    </script>
+  </body>
+</html>

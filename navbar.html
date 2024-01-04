@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Churn Prediction System</title>
+    <style>
+      /* Styles from styles.css */
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      .navbar {
+        background-color: #333;
+        color: #fff;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px;
+      }
+
+      .logo a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 24px;
+        font-weight: bold;
+      }
+
+      .nav-links {
+        list-style: none;
+        display: flex;
+      }
+
+      .nav-links li {
+        margin-right: 20px;
+      }
+
+      .nav-links li a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 18px;
+      }
+
+      .nav-links li a:hover {
+        color: #ffcc00;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo">
+        <a href="#">Churn Prediction</a>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Prediction</a></li>
+        <li><a href="#">Results</a></li>
+        <!-- Add more links as needed -->
+      </ul>
+    </nav>
+
+    <div class="content">
+      <!-- Other content of your website goes here -->
+    </div>
+
+    <script>
+      // JavaScript from the second part of script.js
+      function fetchDataFromBackend() {
+        fetch("/api/data") // Replace '/api/data' with your actual Flask API endpoint
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error("Network response was not ok");
+            }
+            return response.json();
+          })
+          .then((data) => {
+            console.log("Data received from backend:", data);
+            // Perform actions with the received data (e.g., update UI)
+          })
+          .catch((error) => {
+            console.error("There was a problem fetching data:", error);
+          });
+      }
+
+      document.querySelectorAll(".nav-links li a").forEach((link) => {
+        link.addEventListener("click", (event) => {
+          event.preventDefault();
+          fetchDataFromBackend();
+        });
+      });
+    </script>
+  </body>
+</html>

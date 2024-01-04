@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Footer Component</title>
+    <style>
+      /* Styles from footer-styles.css */
+      .site-footer {
+        background-color: #333;
+        color: #fff;
+        padding: 20px 0;
+        text-align: center;
+      }
+
+      .footer-content {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .social-media-links {
+        margin-top: 10px;
+      }
+
+      .social-link {
+        display: inline-block;
+        margin-right: 10px;
+        color: #fff;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <body>
+    <footer class="site-footer">
+      <div class="footer-content">
+        <!-- Footer content will be dynamically added by the script -->
+      </div>
+    </footer>
+
+    <script>
+      // JavaScript code for fetching and displaying footer data from the backend
+      document.addEventListener("DOMContentLoaded", function () {
+        fetchFooterData(); // Fetch footer data when the page loads
+      });
+
+      function fetchFooterData() {
+        fetch("/api/footer_data") // Replace with your Flask backend endpoint
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error("Network response was not ok");
+            }
+            return response.json();
+          })
+          .then((footerData) => {
+            displayFooterContent(footerData);
+          })
+          .catch((error) => {
+            console.error("There was a problem fetching footer data:", error);
+            // Handle errors or display a default footer content on the UI
+          });
+      }
+
+      function displayFooterContent(footerData) {
+        const footerContent = document.querySelector(".footer-content");
+
+        // Example: Update footer content with fetched data
+        const contactInfo = document.createElement("p");
+        contactInfo.textContent = `Contact us: ${footerData.contactEmail}`;
+        footerContent.appendChild(contactInfo);
+
+        const socialLinksContainer = document.createElement("div");
+        socialLinksContainer.classList.add("social-media-links");
+        footerContent.appendChild(socialLinksContainer);
+
+        // Populate social media links
+        footerData.socialMediaLinks.forEach((link) => {
+          const socialLink = document.createElement("a");
+          socialLink.href = link.url;
+          socialLink.textContent = link.name;
+          socialLink.classList.add("social-link");
+          socialLinksContainer.appendChild(socialLink);
+        });
+      }
+    </script>
+  </body>
+</html>

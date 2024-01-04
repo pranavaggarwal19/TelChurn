@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Churn Prediction Results</title>
+    <style>
+      /* Styles from result-styles.css */
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+      }
+
+      .result-container {
+        width: 400px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      h2 {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      #predictionResult {
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="result-container">
+      <h2>Churn Prediction Results</h2>
+      <div id="predictionResult">
+        <!-- Prediction result will be displayed here -->
+      </div>
+    </div>
+
+    <script>
+      // JavaScript code for displaying the prediction result received from the backend
+      document.addEventListener("DOMContentLoaded", function () {
+        fetchPredictionResult(); // Fetch prediction result when the page loads
+      });
+
+      function fetchPredictionResult() {
+        fetch("/api/get_prediction_result") // Replace with your Flask backend endpoint
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error("Network response was not ok");
+            }
+            return response.json();
+          })
+          .then((predictionResult) => {
+            displayPredictionResult(predictionResult);
+          })
+          .catch((error) => {
+            console.error(
+              "There was a problem fetching the prediction result:",
+              error
+            );
+            // Handle errors or display an error message on the UI
+          });
+      }
+
+      function displayPredictionResult(result) {
+        const resultContainer = document.getElementById("predictionResult");
+        resultContainer.innerHTML = `
+      <p><strong>Prediction:</strong> ${result.prediction}</p>
+      <p><strong>Offer Recommendation:</strong> ${result.offerRecommendation}</p>
+    `;
+      }
+    </script>
+  </body>
+</html>
